@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LyConnect - Login</title>
-  <link rel="stylesheet" href="login.css" />
+  <link rel="stylesheet" href="Style/login.css" >
 </head>
 <body>
 <!-- Imagem de fundo -->
@@ -18,7 +18,6 @@
     <h2>Bem-Vindo(a) de volta!</h2>
     <p>Entre com suas informações de login</p>
 
-    <form action="login.php" method="POST">
     <label for="email">Email</label>
     <input type="email" id="email" placeholder="Digite seu email" />
 
