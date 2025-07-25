@@ -7,6 +7,29 @@
   <link rel="stylesheet" href="login.css" />
 </head>
 <body>
+<!-- Imagem de fundo -->
+  <img src="img/Site para link na bio blogueiro fotográfico em Verde e branco .png" alt="Fundo" class="background-image" />
 
+  <div class="container">
+
+    <!-- Logo circular -->
+    <img src="img/Group 1.png" alt="Logo LyConnect" class="circle-logo" />
+
+    <h2>Bem-Vindo(a) de volta!</h2>
+    <p>Entre com suas informações de login</p>
+
+    <form action="login.php" method="POST">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Digite seu email" />
+
+    <label for="senha">Senha</label>
+    <input type="password" id="senha" placeholder="Digite sua senha" />
+
+    <a href="pagprincipal.html" class="botao-link">Entrar</a>
+
+    <div class="register">
+      É novo por aqui? <a href="cadastro.html">Cadastre-se</a>
+    </div>
+  </div>
 </body>
 </html>
