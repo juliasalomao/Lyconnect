@@ -165,7 +165,7 @@
         </div>
     </div>
     
-    <script src="../modal.js"></script>
+    <script src="../js/modal.js"></script>
 
 </body>
 </html>
@@ -200,7 +200,4 @@
                 </div>
             </div>
         </div>
-    </div>
-
-
-
+    </div>

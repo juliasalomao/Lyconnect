@@ -26,7 +26,7 @@ body {
     width: 450px;
   
     backdrop-filter: blur(100px);
-      background: linear-gradient(to right, #8e4521, #d89067);
+      background: linear-gradient(to right, #8e4521, #b35f2f);
     -webkit-backdrop-filter: blur(10px);
     border-right: 1px solid rgba(255, 255, 255, 0.1);
     color: white;
