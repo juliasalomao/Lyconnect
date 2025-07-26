@@ -4,20 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Contatos</title>
-<<<<<<< HEAD
-    <link rel="stylesheet" href="Viem/Home.css">
-</head>
-<body>
-    <div class="container">
-        
-        <!-- NOVA ALTERÇPMW -->
-=======
-    <link rel="stylesheet" href="../Style/Home.css">
+
+    <link rel="stylesheet" href="../Style/home.css">
 </head>
 <body>
     <div class="container">
         <!-- Sidebar -->
->>>>>>> b350e53 (feat: teste)
         <div class="sidebar">
             <div class="sidebar-header">
                 <span class="menu-icon">≡</span>
@@ -35,93 +27,6 @@
             
             <div class="contacts-list" id="contactsList">
                 <div class="contact-item active" data-contact="fabio">
-<<<<<<< HEAD
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Fábio Souza</span>
-                </div>
-                <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Tiana Melo Silva</span>
-                </div>
-                <div class="contact-item" data-contact="gabriel">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Gabriel Reis Couto</span>
-                </div>
-                <div class="contact-item" data-contact="felipe">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Felipe Lins Pereira</span>
-                </div>
-                <div class="contact-item" data-contact="luisa1">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Luísa Costa Maia</span>
-                </div>
-                <div class="contact-item" data-contact="luisa2">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Joaquim Borges Ferreira</span>
-                </div>
-                <div class="contact-item" data-contact="luisa3">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Marcelo Belo Nader</span>
-                </div>
-                <div class="contact-item" data-contact="pedro">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Pedro Almeida</span>
-                </div>
-                <div class="contact-item" data-contact="ana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Ana Carolina</span>
-                </div>
-                <div class="contact-item" data-contact="carlos">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Carlos Eduardo</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Allana Santos Rocha</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Beatriz Motta Silva</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Pedro Emanoel Alvez</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Sophia Dacy Mores</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Anna Luísa Texeira</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Julia Santos Paim</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Reynan Mesquita Ferreira</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Anderson Guilherme Poul</span>
-                </div>
-                 <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Giulia Evellyn Carvalho</span>
-                </div>
-                     <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Mathildes Oliveira De Araújo</span>
-                </div>
-                     <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-                    <span class="contact-name">Diogo Santos Maia</span>
-                </div>
-                     <div class="contact-item" data-contact="tiana">
-                    <div class="contact-avatar"><img src="img/user 7.png" alt=""></div>
-=======
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Fábio Souza</span>
                 </div>
@@ -207,7 +112,6 @@
                 </div>
                      <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
->>>>>>> b350e53 (feat: teste)
                     <span class="contact-name">Amanda Araújo Cavalcante</span>
                 </div>
             </div>
@@ -224,11 +128,7 @@
         <div class="main-content">
             <div class="profile-section">
                 <div class="profile-header">
-<<<<<<< HEAD
-                    <div class="profile-avatar"> <img src="img/user 7.png" alt=""></div>
-=======
                     <div class="profile-avatar"> <img src="../img/user 7.png" alt=""></div>
->>>>>>> b350e53 (feat: teste)
                     <div class="profile-info">
                         <h2 id="profileName">Fábio Souza</h2>
                         <p id="profileRole">cargo profissional</p>
@@ -265,7 +165,8 @@
         </div>
     </div>
     
-    <script src="modal.js"></script>
+    <script src="../modal.js"></script>
+
 </body>
 </html>
 
@@ -278,15 +179,15 @@
             <h2>Salvar contato</h2>
             <div class="modal-form">
                 <div class="form-group-modal">
-                    <img src="img/account 1.png" alt="" class="modal-icon">
+                    <img src="../img/account 1.png" alt="" class="modal-icon">
                     <input type="text" placeholder="Insira nome">
                 </div>
                 <div class="form-group-modal">
-                    <img src="img/account 1.png" alt="" class="modal-icon">
+                    <img src="../img/account 1.png" alt="" class="modal-icon">
                     <input type="text" placeholder="Insira sobrenome">
                 </div>
                 <div class="form-group-modal">
-                    <img src="img/user 7.png" alt="" class="modal-icon">
+                    <img src="../img/user 7.png" alt="" class="modal-icon">
                     <span class="country-code">País +55</span>
                     <input type="text" placeholder="Insira Nº de telefone">
                 </div>
@@ -299,9 +200,7 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
     </div>
 
 
->>>>>>> b350e53 (feat: teste)
+
