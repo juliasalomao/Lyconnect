@@ -19,6 +19,7 @@
     <h2>Crie sua conta</h2>
     <p><strong>Preencha os campos para se cadastrar</strong></p>
 
+    //Formulário de Cadastro
     <label for="nome">Nome completo</label>
     <input type="text" id="nome" placeholder="Digite seu nome completo" />
 
