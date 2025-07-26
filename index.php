@@ -24,10 +24,10 @@
     <label for="senha">Senha</label>
     <input type="password" id="senha" placeholder="Digite sua senha" />
 
-    <a href="pagprincipal.html" class="botao-link">Entrar</a>
+    <a href="http://localhost/Lyconnect/View/Home.php" class="botao-link">Entrar</a>
 
     <div class="register">
-      É novo por aqui? <a href="cadastro.html">Cadastre-se</a>
+      É novo por aqui? <a href="http://localhost/Lyconnect/View/Cadastro.php">Cadastre-se</a>
     </div>
   </div>
 </body>

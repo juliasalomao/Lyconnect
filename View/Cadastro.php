@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LyConnect - Cadastro</title>
-  <link rel="stylesheet" href="../templates/assets/css/Cadastro.css" />
+  <link rel="stylesheet" href="../Style/Cadastro.css" />
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     <img src="../img/Group 1.png" alt="Logo LyConnect" class="circle-logo" />
 
     <h2>Crie sua conta</h2>
-    <p>Preencha os campos para se cadastrar</p>
+    <p><strong>Preencha os campos para se cadastrar</strong></p>
 
     <label for="nome">Nome completo</label>
     <input type="text" id="nome" placeholder="Digite seu nome completo" />
@@ -31,10 +31,12 @@
     <label for="confirmar">Confirmar senha</label>
     <input type="password" id="confirmar" placeholder="Confirme sua senha" />
 
-    <button >Cadastrar</button>
+    <!-- ✅ Botão estilizado -->
+   <a href="Home.php" class="botao-link">Cadastrar</a>
+
 
     <div class="register">
-      Já tem uma conta? <a href="">Entrar</a>
+      Já tem uma conta? <a href="../index.php">Entrar</a>
     </div>
   </div>
 
