@@ -1,3 +1,32 @@
+<?php 
+require_once '../vendor/autoload.php';
+
+use Controller\UserController;
+
+$mensagem = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+    $confirmar = $_POST['confirmar'] ?? '';
+
+    if ($senha !== $confirmar) {
+        $mensagem = 'As senhas não coincidem!';
+    } else {
+        $userController = new UserController();
+        $resultado = $userController->createUser($nome, $email, $senha);
+        if ($resultado) {
+            header('Location: ../index.php');
+            exit;
+        } else {
+            $mensagem = 'Erro ao cadastrar. Tente novamente.';
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -20,27 +49,28 @@
     <p><strong>Preencha os campos para se cadastrar</strong></p>
 
 
-    
-    <label for="nome">Nome completo</label>
-    <input type="text" id="nome" placeholder="Digite seu nome completo" />
+    <form action="Cadastro.php" method = "POST">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" />
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu email" />
 
-    <label for="email">Email</label>
-    <input type="email" id="email" placeholder="Digite seu email" />
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" name="senha" placeholder="Crie uma senha" />
 
-    <label for="senha">Senha</label>
-    <input type="password" id="senha" placeholder="Crie uma senha" />
+      <label for="confirmar">Confirmar senha</label>
+      <input type="password" id="confirmar" name="confirmar" placeholder="Confirme sua senha" />
 
-    <label for="confirmar">Confirmar senha</label>
-    <input type="password" id="confirmar" placeholder="Confirme sua senha" />
-
-    <!-- ✅ Botão estilizado -->
-   <a href="Home.php" class="botao-link">Cadastrar</a>
-
-
-    <div class="register">
-      Já tem uma conta? <a href="../index.php">Entrar</a>
+      <!-- ✅ Botão estilizado -->
+     <button type="submit" class = "botao-link">Cadastrar</button>
+  
+  
+      <div class="register">
+        Já tem uma conta? <a href="../index.php">Entrar</a>
+      </div>
     </div>
-  </div>
+    </form>
 
 </body>
 </html>
