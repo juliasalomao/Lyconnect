@@ -6,17 +6,37 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit7393e9f4498c686d4aa2167e1a30a72f
 {
+    public static $files = array (
+        'e1b1c27839d58dbde452f9bcef8279af' => __DIR__ . '/../..' . '/Config/configuration.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'M' => 
+        array (
+            'Model\\' => 6,
+        ),
         'J' => 
         array (
             'Julia\\LyconnectComposer\\' => 24,
         ),
+        'C' => 
+        array (
+            'Controller\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Model',
+        ),
         'Julia\\LyconnectComposer\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src',
+            0 => __DIR__ . '/../..' . '/Lyconnect',
+        ),
+        'Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Controller',
         ),
     );
 

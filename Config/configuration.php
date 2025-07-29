@@ -1,13 +1,8 @@
 <?php
-$host = "localhost";
-$usuario = "root";
-$senha = "";
-$banco = "lyconnect";
 
-$conexao = new mysqli($host, $usuario, $senha, $banco);
-
-if ($conexao->connect_error) {
-    die("Erro na conexão: " . $conexao->connect_error);
-}
-
+define("DB_NAME", "lyconnect");
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASSWORD", '');
+define("DB_PORT", "3306");
 ?>

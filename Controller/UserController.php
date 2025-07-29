@@ -14,8 +14,7 @@ class UserController{
     }
 
     // Cadastro
-    public function createUser($user_fullname, $email, $password)
-    {
+    public function createUser($user_fullname, $email, $password){
 
         if (empty($user_fullname) or empty($email) or empty($password)) {
             return false;
@@ -27,14 +26,12 @@ class UserController{
     }
 
     // Email já cadastrado?
-    public function checkUserByEmail($email)
-    {
+    public function checkUserByEmail($email){
         return $this->userModel->getUserByEmail($email);
     }
 
     // Login
-    public function login($email, $password)
-    {
+    public function login($email, $password){
         $user = $this->userModel->getUserByEmail($email);
 
         if ($user && password_verify($password, $user['password'])) {
@@ -48,14 +45,12 @@ class UserController{
     }
 
     // Usuário loggado?
-    public function isLoggedIn()
-    {
+    public function isLoggedIn(){
         return isset($_SESSION['id']);
     }
 
     // Puxar dados do usuário
-    public function getUserData($id, $user_fullname, $email)
-    {
+    public function getUserData($id, $user_fullname, $email){
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
     }
 }

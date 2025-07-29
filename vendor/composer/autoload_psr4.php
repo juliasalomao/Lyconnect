@@ -6,5 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Julia\\LyconnectComposer\\' => array($baseDir . '/src'),
+    'Model\\' => array($baseDir . '/Model'),
+    'Julia\\LyconnectComposer\\' => array($baseDir . '/Lyconnect'),
+    'Controller\\' => array($baseDir . '/Controller'),
 );
