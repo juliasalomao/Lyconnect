@@ -75,23 +75,7 @@ class User
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
 
             $stmt->execute();
-
-
-            /**
-             * fetch = querySelector();
-             * fetchAll = querySelectorAll();
-             * 
-             * FETCH_ASSOC:
-             * $user[
-             *  "user_fullname" => "teste",
-             *  "email" => "teste@example.com"
-             * ]
-             * 
-             * 
-             * 
-             * COMO OBTER INFORMAÇÕES:
-             * $user['user_fullname'];
-             */
+            
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
 
