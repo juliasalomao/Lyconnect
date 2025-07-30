@@ -1,29 +1,31 @@
-<?php 
+<?php
 require_once '../vendor/autoload.php';
 
 use Controller\UserController;
 
-$mensagem = '';
+$userController = new UserController();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $senha = $_POST['senha'] ?? '';
-    $confirmar = $_POST['confirmar'] ?? '';
+$registerUserMessage = '';
 
-    if ($senha !== $confirmar) {
-        $mensagem = 'As senhas não coincidem!';
-    } else {
-        $userController = new UserController();
-        $resultado = $userController->createUser($nome, $email, $senha);
-        if ($resultado) {
-            header('Location: ../index.php');
-            exit;
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['nome'], $_POST['email'], $_POST['senha'])) {
+        $user_fullname = $_POST['nome'];
+        $email = $_POST['email'];
+        $password = $_POST['senha'];
+
+        if($userController->checkUserByEmail($email)) {
+            $registerUserMessage = "Já existe um usuário cadastrado com esse endereço de e-mail.";
         } else {
-            $mensagem = 'Erro ao cadastrar. Tente novamente.';
+            if($userController->createUser($user_fullname, $email, $password)) {
+                header('Location: ../index.php');
+                exit();
+            } else {
+                $registerUserMessage = 'Erro ao registrar informações.';
+            }
         }
     }
 }
+
 ?>
 
 
