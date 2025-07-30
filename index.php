@@ -24,7 +24,8 @@
     <label for="senha">Senha</label>
     <input type="password" id="senha" placeholder="Digite sua senha" />
 
-    <button type="submit" class="entrar">Entrar</button>
+    <a href="http://localhost/Lyconnect/View/Home.php" class="botao-link">Entrar</a>
+    </form>
 
     <div class="register">
       É novo por aqui? <a href="http://localhost/Lyconnect/View/Cadastro.php">Cadastre-se</a>
