@@ -34,7 +34,7 @@ class UserController{
     public function login($email, $password){
         $user = $this->userModel->getUserByEmail($email);
 
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($password, $user['senha'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['user_fullname'] = $user['user_fullname'];
             $_SESSION['email'] = $user['email'];
