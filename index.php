@@ -3,6 +3,8 @@ require_once 'vendor/autoload.php';
 
 use Controller\UserController;
 
+session_start(); // Adicione esta linha
+
 $userController = new UserController();
 $loginMessage = '';
 
@@ -10,7 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['senha'];
 
-    if ($userController->login($email, $password)) {
+    // O método login deve retornar os dados do usuário autenticado
+    $user = $userController->login($email, $password);
+
+    if ($user) {
+        // Salva nome e email na sessão
+        $_SESSION['usuario'] = [
+            'nome' => $user['nome'],
+            'email' => $user['email']
+        ];
         header('Location: View/Home.php');
         exit();
     } else {
