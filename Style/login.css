@@ -94,25 +94,26 @@ input::placeholder {
   color: #f5e5d8;
 }
 
-/* Estilo do link como botão */
-.botao-link {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  border-radius: 10px;
-  background-color: #a15529;
+.botao-login {
+  background-color: #924e19;
   color: white;
+  padding: 10px 20px;
+  border: none;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 16px;
   font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s;
-  margin-top: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
-/* Estados do link */
-.botao-link:hover {
-  background-color: #8e4521;
+.erro-login {
+  color: red;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
 }
-
 .botao-link:visited {
   color: white;
 }

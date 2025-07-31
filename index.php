@@ -48,7 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <label for="senha">Senha</label>
       <input type="password" required id="senha" name = "senha" placeholder="Digite sua senha" />
 
-      <button type = "submit" class = "in-btn">Entrar</button>
+      <?php if (!empty($loginMessage)): ?>
+      <div class="erro-login" style="color: red; margin-bottom: 10px;">
+      <?php echo $loginMessage; ?>
+      </div>
+      <?php endif; ?>
+
+      <button type = "submit" class = "botao-login">Entrar</button>
       </form>
   
       <div class="register">
