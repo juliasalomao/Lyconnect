@@ -1,18 +1,18 @@
 // Dados fictícios de contatos
 const contactsData = [
-    {
+       {
         id: 1,
-        name: "Ana Silva",
-        email: "ana.silva@email.com",
-        phone: "(11) 99999-1234",
-        company: "Tech Solutions",
-        position: "Desenvolvedora Frontend",
-        location: "São Paulo, SP",
-        address: "Rua das Flores, 123",
-        bio: "Especialista em React e JavaScript com 5 anos de experiência em desenvolvimento web.",
+        name: "Fábio Souza",
+        email: "Fabiosgonçalves7@Gmail.com",
+        phone: "(85) 9 87348907",
+        company: "Freelancer",
+        position: "Desenvolvedor Full Stack",
+        location: "Fortaleza, CE",
+        address: "Rua Andrea 89",
+        bio: "Desenvolvedor experiente em tecnologias web modernas e soluções inovadoras.",
         avatar: "../img/user 7.png",
-        lastContact: "2024-01-15",
-        tags: ["Frontend", "React", "JavaScript"]
+        lastContact: "2024-01-25",
+        tags: ["Desenvolvimento", "Full Stack", "Web"]
     },
     {
         id: 2,
@@ -72,6 +72,20 @@ const contactsData = [
     },
     {
         id: 6,
+        name: "Ana Silva",
+        email: "ana.silva@email.com",
+        phone: "(11) 99999-1234",
+        company: "Tech Solutions",
+        position: "Desenvolvedora Frontend",
+        location: "São Paulo, SP",
+        address: "Rua das Flores, 123",
+        bio: "Especialista em React e JavaScript com 5 anos de experiência em desenvolvimento web.",
+        avatar: "../img/user 7.png",
+        lastContact: "2024-01-15",
+        tags: ["Frontend", "React", "JavaScript"]
+    },
+    {
+        id: 7,
         name: "Roberto Lima",
         email: "roberto.lima@vendas.com",
         phone: "(62) 94444-2468",
@@ -84,20 +98,7 @@ const contactsData = [
         lastContact: "2024-01-16",
         tags: ["Vendas", "Gestão", "Comercial"]
     },
-    {
-        id: 7,
-        name: "Fábio Souza",
-        email: "Fabiosgonçalves7@Gmail.com",
-        phone: "(85) 9 87348907",
-        company: "Freelancer",
-        position: "Desenvolvedor Full Stack",
-        location: "Fortaleza, CE",
-        address: "Rua Andrea 89",
-        bio: "Desenvolvedor experiente em tecnologias web modernas e soluções inovadoras.",
-        avatar: "../img/user 7.png",
-        lastContact: "2024-01-25",
-        tags: ["Desenvolvimento", "Full Stack", "Web"]
-    },
+ 
     {
         id: 8,
         name: "Tiana Melo Silva",
@@ -142,16 +143,25 @@ const contactsData = [
     }
 ];
 
+let currentContactId = null;
+let isEditing = false;
+
 document.addEventListener('DOMContentLoaded', function() {
     const userIcon = document.querySelector('.user-icon');
     const modal = document.getElementById('contactModal');
     const closeButton = document.querySelector('.close-button');
+    const addContactForm = document.getElementById('addContactForm');
+    const editBtn = document.getElementById('editContactBtn');
+    const saveBtn = document.getElementById('saveContactBtn');
+    const deleteBtn = document.getElementById('deleteContactBtn');
 
     // Inicializar funcionalidade de pesquisa de contatos
     initializeContactSearch();
 
+    // Event listeners para modal
     userIcon.addEventListener('click', function() {
         modal.style.display = 'flex';
+        addContactForm.reset();
     });
 
     closeButton.addEventListener('click', function() {
@@ -163,12 +173,74 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.style.display = 'none';
         }
     });
+
+    // Event listener para adicionar contato
+    addContactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const nome = document.getElementById('modalNome').value;
+        const email = document.getElementById('modalEmail').value;
+        const cargo = document.getElementById('modalCargo').value || "Novo Cargo";
+        const telefone = document.getElementById('modalTelefone').value;
+        const endereco = document.getElementById('modalEndereco').value;
+        
+        // Criar novo contato
+        const newContact = {
+            id: contactsData.length + 1,
+            name: nome,
+            email: email,
+            phone: telefone,
+            company: "Nova Empresa",
+            position: cargo,
+            location: "Nova Localização",
+            address: endereco,
+            bio: "Novo contato adicionado.",
+            avatar: "../img/user 7.png",
+            lastContact: new Date().toISOString().split('T')[0],
+            tags: ["Novo"]
+        };
+        
+        // Adicionar à lista de contatos
+        contactsData.push(newContact);
+        
+        // Renderizar novamente a sidebar com o novo contato
+        renderContactsInSidebar(contactsData);
+        
+        // Mostrar detalhes do novo contato
+        showContactDetailsInMain(newContact);
+        
+        // Selecionar o novo contato na sidebar
+        selectContactInSidebar(newContact.id);
+        
+        // Fechar modal
+        modal.style.display = 'none';
+        
+        // Limpar formulário
+        addContactForm.reset();
+        
+        // Mostrar mensagem de sucesso
+        alert('Contato adicionado com sucesso!');
+    });
+
+    // Event listener para botão editar
+    editBtn.addEventListener('click', function() {
+        toggleEditMode(true);
+    });
+
+    // Event listener para botão salvar
+    saveBtn.addEventListener('click', function() {
+        saveContactChanges();
+    });
+
+    // Event listener para botão excluir
+    deleteBtn.addEventListener('click', function() {
+        deleteContact();
+    });
 });
 
 // Função para inicializar a pesquisa de contatos
 function initializeContactSearch() {
     const searchInput = document.getElementById('searchInput');
-    const contactsList = document.getElementById('contactsList');
     
     if (searchInput) {
         // Adicionar event listener para pesquisa
@@ -184,13 +256,14 @@ function initializeContactSearch() {
         });
     }
     
-    // Renderizar lista inicial de contatos (vazia até clicar na pesquisa)
-    renderContactsInSidebar([]);
+    // Renderizar lista inicial de contatos (mostrar todos)
+    renderContactsInSidebar(contactsData);
     
     // Carregar contato padrão (Fábio Souza)
     const defaultContact = contactsData.find(contact => contact.name === "Fábio Souza");
     if (defaultContact) {
         showContactDetailsInMain(defaultContact);
+        currentContactId = defaultContact.id;
     }
 }
 
@@ -225,8 +298,10 @@ function renderContactsInSidebar(contacts) {
         contactItem.className = 'contact-item';
         contactItem.setAttribute('data-contact', contact.id);
         
-        // Adicionar classe active para o primeiro item
-        if (index === 0) {
+        // Adicionar classe active para o primeiro item se não há contato selecionado
+        if (index === 0 && !currentContactId) {
+            contactItem.classList.add('active');
+        } else if (contact.id === currentContactId) {
             contactItem.classList.add('active');
         }
         
@@ -249,6 +324,12 @@ function renderContactsInSidebar(contacts) {
             
             // Mostrar detalhes do contato no main container
             showContactDetailsInMain(contact);
+            currentContactId = contact.id;
+            
+            // Sair do modo de edição se estiver ativo
+            if (isEditing) {
+                toggleEditMode(false);
+            }
         });
         
         contactsList.appendChild(contactItem);
@@ -278,6 +359,138 @@ function showContactDetailsInMain(contact) {
     if (enderecoInput) enderecoInput.value = contact.address;
 }
 
+// Função para alternar modo de edição
+function toggleEditMode(enable) {
+    const nomeInput = document.getElementById('nomeInput');
+    const emailInput = document.getElementById('emailInput');
+    const telefoneInput = document.getElementById('telefoneInput');
+    const enderecoInput = document.getElementById('enderecoInput');
+    const editBtn = document.getElementById('editContactBtn');
+    const saveBtn = document.getElementById('saveContactBtn');
+    
+    isEditing = enable;
+    
+    if (enable) {
+        // Habilitar campos para edição
+        nomeInput.disabled = false;
+        emailInput.disabled = false;
+        telefoneInput.disabled = false;
+        enderecoInput.disabled = false;
+        
+        // Esconder botão editar (opcional, se o botão Salvar já estiver visível)
+        editBtn.style.display = 'none';
+        saveBtn.style.display = 'inline-block';
+    } else {
+        // Desabilitar campos
+        nomeInput.disabled = true;
+        emailInput.disabled = true;
+        telefoneInput.disabled = true;
+        enderecoInput.disabled = true;
+        
+        // Mostrar botão editar, manter botão salvar visível
+        editBtn.style.display = 'inline-block';
+        saveBtn.style.display = 'inline-block';
+    }
+}
+
+// Função para salvar alterações do contato
+function saveContactChanges() {
+    if (!currentContactId) return;
+    
+    const contact = contactsData.find(c => c.id === currentContactId);
+    if (!contact) return;
+    
+    // Obter valores dos campos
+    const nomeInput = document.getElementById('nomeInput');
+    const emailInput = document.getElementById('emailInput');
+    const telefoneInput = document.getElementById('telefoneInput');
+    const enderecoInput = document.getElementById('enderecoInput');
+    
+    // Atualizar dados do contato
+    contact.name = nomeInput.value;
+    contact.email = emailInput.value;
+    contact.phone = telefoneInput.value;
+    contact.address = enderecoInput.value;
+    
+    // Atualizar informações do perfil
+    const profileName = document.getElementById('profileName');
+    if (profileName) profileName.textContent = contact.name;
+    
+    // Renderizar novamente a sidebar para refletir mudanças
+    renderContactsInSidebar(contactsData);
+    
+    // Sair do modo de edição
+    toggleEditMode(false);
+    
+    // Mostrar mensagem de sucesso
+    alert('Contato atualizado com sucesso!');
+}
+
+// Função para excluir contato
+function deleteContact() {
+    if (!currentContactId) return;
+    
+    if (confirm('Tem certeza que deseja excluir este contato?')) {
+        // Remover contato da lista
+        const contactIndex = contactsData.findIndex(c => c.id === currentContactId);
+        if (contactIndex !== -1) {
+            contactsData.splice(contactIndex, 1);
+        }
+        
+        // Renderizar novamente a sidebar
+        renderContactsInSidebar(contactsData);
+        
+        // Selecionar o primeiro contato disponível
+        if (contactsData.length > 0) {
+            showContactDetailsInMain(contactsData[0]);
+            currentContactId = contactsData[0].id;
+            selectContactInSidebar(currentContactId);
+        } else {
+            // Limpar campos se não há mais contatos
+            clearContactDetails();
+            currentContactId = null;
+        }
+        
+        // Sair do modo de edição se estiver ativo
+        if (isEditing) {
+            toggleEditMode(false);
+        }
+        
+        alert('Contato excluído com sucesso!');
+    }
+}
+
+// Função para limpar detalhes do contato
+function clearContactDetails() {
+    const profileName = document.getElementById('profileName');
+    const profileRole = document.getElementById('profileRole');
+    const nomeInput = document.getElementById('nomeInput');
+    const emailInput = document.getElementById('emailInput');
+    const telefoneInput = document.getElementById('telefoneInput');
+    const enderecoInput = document.getElementById('enderecoInput');
+    
+    if (profileName) profileName.textContent = '';
+    if (profileRole) profileRole.textContent = '';
+    if (nomeInput) nomeInput.value = '';
+    if (emailInput) emailInput.value = '';
+    if (telefoneInput) telefoneInput.value = '';
+    if (enderecoInput) enderecoInput.value = '';
+}
+
+// Função para selecionar um contato específico na sidebar
+function selectContactInSidebar(contactId) {
+    // Remover classe active de todos os itens
+    document.querySelectorAll('.contact-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Adicionar classe active ao contato específico
+    const contactItem = document.querySelector(`[data-contact="${contactId}"]`);
+    if (contactItem) {
+        contactItem.classList.add('active');
+    }
+}
+
 // Função para formatar data
 function formatDate(dateString) {
     const date = new Date(dateString);
@@ -295,4 +508,30 @@ function callPerson(phone) {
     alert(`Iniciando ligação para: ${phone}`);
     // window.location.href = `tel:${phone}`;
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const profilePopup = document.getElementById('profilePopup');
+    const closeBtn = document.querySelector('.close-profile-popup');
+    const closeProfilePopupBtn = document.getElementById('closeProfilePopupBtn');
+    const perfilIcon = document.getElementById('perfil'); // Seleciona o ícone
 
+    // Abre popup ao clicar no ícone de perfil
+    if (perfilIcon) {
+        perfilIcon.addEventListener('click', function() {
+            // Preenche os dados do popup
+            document.getElementById('popupProfileName').textContent = document.getElementById('profileName').textContent;
+            document.getElementById('popupProfileRole').textContent = document.getElementById('profileRole').textContent;
+            document.getElementById('popupProfileEmail').textContent = document.getElementById('emailInput').value;
+            document.getElementById('popupProfilePhone').textContent = document.getElementById('telefoneInput').value;
+            document.getElementById('popupProfileAddress').textContent = document.getElementById('enderecoInput').value;
+            profilePopup.style.display = 'block';
+        });
+    }
+
+    // Fecha popup
+    closeBtn.addEventListener('click', function() {
+        profilePopup.style.display = 'none';
+    });
+    closeProfilePopupBtn.addEventListener('click', function() {
+        profilePopup.style.display = 'none';
+    });
+});

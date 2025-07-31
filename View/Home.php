@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Contatos</title>
 
-    <link rel="stylesheet" href="../Style/home.css">
+    <link rel="stylesheet" href="../Style/Home.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
+
 <body>
     <div class="container">
         <!-- Sidebar -->
@@ -14,17 +17,34 @@
             <div class="sidebar-header">
                 <span class="menu-icon">≡</span>
                 <h1>Contatos</h1>
+                <i class="bi bi-person" id="perfil"></i>
             </div>
-            
+
+            <!-- Popup perfil -->
+            <div id="profilePopup" class="profile-popup" style="display:none;">
+                <div class="profile-popup-content">
+                    <span class="close-profile-popup" style="cursor:pointer; float:right;">&times;</span>
+                    <div class="profile-popup-avatar">
+                        <img src="../img/user 7.png" alt="Avatar" style="width:80px; border-radius:50%;">
+                    </div>
+                    <h3 id="popupProfileName">Fábio Souza</h3>
+                    <p id="popupProfileRole">Desenvolvedor Full Stack</p>
+                    <p id="popupProfileEmail">Fabiosgonçalves7@Gmail.com</p>
+                    <p id="popupProfilePhone">(85) 9 87348907</p>
+                    <p id="popupProfileAddress">Rua Andrea 89</p>
+                </div>
+            </div>
+            <!-- Fim Popup perfil -->
+
             <div class="search-container">
                 <div class="search-box">
                     <span class="search-icon">🔍</span>
                     <input type="text" id="searchInput" placeholder="Buscar" class="search-input">
                 </div>
 
-                <div class="seu-nome"> <h4>Você - Mariana Soares</h4> </div>
+
             </div>
-            
+
             <div class="contacts-list" id="contactsList">
                 <div class="contact-item active" data-contact="fabio">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
@@ -32,7 +52,7 @@
                 </div>
                 <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
-                    <span class="contact-name">Tiana Melo Silva</span>
+                    <span class="contact-name">matias</span>
                 </div>
                 <div class="contact-item" data-contact="gabriel">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
@@ -66,63 +86,63 @@
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Carlos Eduardo</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Allana Santos Rocha</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Beatriz Motta Silva</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Pedro Emanoel Alvez</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Sophia Dacy Mores</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Anna Luísa Texeira</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Julia Santos Paim</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Reynan Mesquita Ferreira</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Anderson Guilherme Poul</span>
                 </div>
-                 <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Giulia Evellyn Carvalho</span>
                 </div>
-                     <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Mathildes Oliveira De Araújo</span>
                 </div>
-                     <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Diogo Santos Maia</span>
                 </div>
-                     <div class="contact-item" data-contact="tiana">
+                <div class="contact-item" data-contact="tiana">
                     <div class="contact-avatar"><img src="../img/user 7.png" alt=""></div>
                     <span class="contact-name">Amanda Araújo Cavalcante</span>
                 </div>
             </div>
         </div>
-        
 
-      
-            <div class="header">
-                <div class="user-icon"> +
-                </div>
+
+
+        <div class="header">
+            <div class="user-icon"> +
             </div>
+        </div>
 
 
         <div class="main-content">
@@ -134,42 +154,39 @@
                         <p id="profileRole">cargo profissional</p>
                         <div class="profile-actions">
                             <button class="status-btn">Status: Ativo</button>
-                            <button class="edit-btn">Editar</button>
-                            <button class="delete-btn">Excluir</button>
+                            <button class="edit-btn" id="editContactBtn">Editar</button>
+                            <button class="save-btn" id="saveContactBtn">Salvar</button>
+                            <button class="delete-btn" id="deleteContactBtn">Excluir</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="form-section">
                 <div class="form-group">
                     <label for="nomeInput">Nome:</label>
-                    <input type="text" id="nomeInput" value="Fábio Souza Gonçalves" class="form-input">
+                    <input type="text" id="nomeInput" value="Fábio Souza Gonçalves" class="form-input" disabled>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="emailInput">E-Mail:</label>
-                    <input type="email" id="emailInput" value="Fabiosgonçalves7@Gmail.com" class="form-input">
+                    <input type="email" id="emailInput" value="Fabiosgonçalves7@Gmail.com" class="form-input" disabled>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="telefoneInput">Telefone:</label>
-                    <input type="tel" id="telefoneInput" value="(85) 9 87348907" class="form-input">
+                    <input type="tel" id="telefoneInput" value="(85) 9 87348907" class="form-input" disabled>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="enderecoInput">Endereço:</label>
-                    <input type="text" id="enderecoInput" value="Rua Andrea 89" class="form-input">
+                    <input type="text" id="enderecoInput" value="Rua Andrea 89" class="form-input" disabled>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script src="../js/modal.js"></script>
-
-</body>
-</html>
-
 
 
     <!-- Modal -->
@@ -177,27 +194,43 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Salvar contato</h2>
-            <div class="modal-form">
+
+            <!-- FORMULÁRIO -->
+            <form id="addContactForm" method="POST" class="modal-form">
                 <div class="form-group-modal">
                     <img src="../img/account 1.png" alt="" class="modal-icon">
-                    <input type="text" placeholder="Insira nome">
+                    <input type="text" id="modalNome" name="nome" placeholder="Insira nome" required>
                 </div>
                 <div class="form-group-modal">
                     <img src="../img/account 1.png" alt="" class="modal-icon">
-                    <input type="text" placeholder="Insira sobrenome">
+                    <input type="email" id="modalEmail" name="email" placeholder="Insira e-mail" required>
+                </div>
+                <div class="form-group-modal">
+                    <img src="../img/account 1.png" alt="" class="modal-icon">
+                    <input type="text" id="modalCargo" name="cargo" placeholder="Insira cargo">
                 </div>
                 <div class="form-group-modal">
                     <img src="../img/user 7.png" alt="" class="modal-icon">
                     <span class="country-code">País +55</span>
-                    <input type="text" placeholder="Insira Nº de telefone">
+                    <input type="tel" id="modalTelefone" name="telefone" placeholder="Insira Nº de telefone" required>
                 </div>
-                <div class="form-group-modal switch-group">
-                    <span>Sincronizar contato com celular</span>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
+                <div class="form-group-modal">
+                    <img src="../img/user 7.png" alt="" class="modal-icon">
+                    <input type="text" id="modalEndereco" name="endereco" placeholder="Insira endereço">
                 </div>
-            </div>
+
+                <!-- BOTÃO DE SALVAR -->
+                <div class="form-group-modal" style="text-align: right; margin-top: 20px;">
+                    <button type="submit"
+                        style="padding: 10px 20px; background-color: #052959; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                        Salvar
+                    </button>
+                </div>
+            </form>
         </div>
-    </div>
+    </div>
+
+
+</body>
+
+</html>
