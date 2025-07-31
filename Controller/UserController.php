@@ -29,9 +29,11 @@ class UserController{
     public function checkUserByEmail($email){
         return $this->userModel->getUserByEmail($email);
     }
+}
 
-    // Login
+     // Login
     public function login($email, $password){
+
         $user = $this->userModel->getUserByEmail($email);
 
         if ($user && password_verify($password, $user['senha'])) {
@@ -53,6 +55,7 @@ class UserController{
     public function getUserData($id, $user_fullname, $email){
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
     }
-}
+
+
 
 ?>
