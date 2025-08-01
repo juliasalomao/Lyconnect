@@ -174,52 +174,75 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Event listener para adicionar contato
+    // Enviar dados para backend via fetch ===
     addContactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        const nome = document.getElementById('modalNome').value;
-        const email = document.getElementById('modalEmail').value;
-        const cargo = document.getElementById('modalCargo').value || "Novo Cargo";
-        const telefone = document.getElementById('modalTelefone').value;
-        const endereco = document.getElementById('modalEndereco').value;
-        
-        // Criar novo contato
-        const newContact = {
-            id: contactsData.length + 1,
-            name: nome,
+
+        const nome = document.getElementById('modalNome').value.trim();
+        const email = document.getElementById('modalEmail').value.trim();
+        const cargo = document.getElementById('modalCargo').value.trim() || "Novo Cargo";
+        const telefone = document.getElementById('modalTelefone').value.trim();
+        const endereco = document.getElementById('modalEndereco').value.trim();
+
+        // Dados para enviar no POST
+        const novoContato = {
+            nome: nome,
             email: email,
-            phone: telefone,
-            company: "Nova Empresa",
-            position: cargo,
-            location: "Nova Localização",
-            address: endereco,
-            bio: "Novo contato adicionado.",
-            avatar: "../img/user 7.png",
-            lastContact: new Date().toISOString().split('T')[0],
-            tags: ["Novo"]
+            telefone: telefone,
+            endereco: endereco,
+            cargo: cargo
         };
-        
-        // Adicionar à lista de contatos
-        contactsData.push(newContact);
-        
-        // Renderizar novamente a sidebar com o novo contato
-        renderContactsInSidebar(contactsData);
-        
-        // Mostrar detalhes do novo contato
-        showContactDetailsInMain(newContact);
-        
-        // Selecionar o novo contato na sidebar
-        selectContactInSidebar(newContact.id);
-        
-        // Fechar modal
-        modal.style.display = 'none';
-        
-        // Limpar formulário
-        addContactForm.reset();
-        
-        // Mostrar mensagem de sucesso
-        alert('Contato adicionado com sucesso!');
+
+        fetch('../Controller/SalvarContato.php', {  
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(novoContato)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert('Contato adicionado com sucesso!');
+
+                // Gerar novo id (maior id + 1)
+                const newId = contactsData.length ? Math.max(...contactsData.map(c => c.id)) + 1 : 1;
+
+                // Montar contato completo pra UI local
+                const contatoCompleto = {
+                    id: newId,
+                    name: nome,
+                    email: email,
+                    phone: telefone,
+                    company: "Nova Empresa",
+                    position: cargo,
+                    location: "Nova Localização",
+                    address: endereco,
+                    bio: "Novo contato adicionado.",
+                    avatar: "../img/user 7.png",
+                    lastContact: new Date().toISOString().split('T')[0],
+                    tags: ["Novo"]
+                };
+
+                // Adicionar contato no array local
+                contactsData.push(contatoCompleto);
+
+                // Renderizar sidebar e detalhes do contato
+                renderContactsInSidebar(contactsData);
+                showContactDetailsInMain(contatoCompleto);
+                selectContactInSidebar(contatoCompleto.id);
+
+                // Fechar modal e resetar formulário
+                modal.style.display = 'none';
+                addContactForm.reset();
+            } else {
+                alert('Erro ao adicionar contato: ' + (data.message || 'Erro desconhecido'));
+            }
+        })
+        .catch(err => {
+            console.error('Erro na requisição:', err);
+            alert('Erro ao conectar com o servidor.');
+        });
     });
 
     // Event listener para botão editar
@@ -237,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function() {
         deleteContact();
     });
 });
-
 // Função para inicializar a pesquisa de contatos
 function initializeContactSearch() {
     const searchInput = document.getElementById('searchInput');
