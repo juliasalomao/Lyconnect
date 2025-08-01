@@ -511,27 +511,15 @@ function callPerson(phone) {
 document.addEventListener('DOMContentLoaded', function() {
     const profilePopup = document.getElementById('profilePopup');
     const closeBtn = document.querySelector('.close-profile-popup');
-    const closeProfilePopupBtn = document.getElementById('closeProfilePopupBtn');
-    const perfilIcon = document.getElementById('perfil'); // Seleciona o ícone
+    const perfilIcon = document.getElementById('perfil'); 
 
-    // Abre popup ao clicar no ícone de perfil
     if (perfilIcon) {
         perfilIcon.addEventListener('click', function() {
-            // Preenche os dados do popup
-            document.getElementById('popupProfileName').textContent = document.getElementById('profileName').textContent;
-            document.getElementById('popupProfileRole').textContent = document.getElementById('profileRole').textContent;
-            document.getElementById('popupProfileEmail').textContent = document.getElementById('emailInput').value;
-            document.getElementById('popupProfilePhone').textContent = document.getElementById('telefoneInput').value;
-            document.getElementById('popupProfileAddress').textContent = document.getElementById('enderecoInput').value;
             profilePopup.style.display = 'block';
         });
     }
 
-    // Fecha popup
     closeBtn.addEventListener('click', function() {
         profilePopup.style.display = 'none';
     });
-    closeProfilePopupBtn.addEventListener('click', function() {
-        profilePopup.style.display = 'none';
-    });
-});
+}); 

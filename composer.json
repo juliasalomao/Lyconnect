@@ -4,8 +4,8 @@
     "autoload": {
         "psr-4": {
             "Julia\\LyconnectComposer\\": "Lyconnect/",
-            "Controller\\": "Controller/",
-            "Model\\": "Model/"
+            "Controller\\": "Lyconnect/Controller/",
+            "Model\\": "Lyconnect/Model/"
         },
         "files": [
             "Config/configuration.php"

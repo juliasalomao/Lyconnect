@@ -3,6 +3,8 @@ require_once 'vendor/autoload.php';
 
 use Controller\UserController;
 
+session_start(); // Inicia a sessão
+
 $userController = new UserController();
 $loginMessage = '';
 
@@ -11,15 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['senha'];
 
     if ($userController->login($email, $password)) {
+        $_SESSION['email'] = $email; // Armazena o e-mail na sessão
         header('Location: View/Home.php');
         exit();
     } else {
         $loginMessage = "Email ou senha incorretos.";
     }
 }
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">

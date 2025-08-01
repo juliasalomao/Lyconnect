@@ -1,3 +1,21 @@
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+session_start();
+
+use Controller\UserController;
+
+$userController = new UserController();
+
+// Redireciona se não estiver logado
+if (!isset($_SESSION['email'])) {
+    header("Location: ../index.php");
+    exit();
+}
+
+$emailLogado = $_SESSION['email'];
+$usuario = $userController->checkUserByEmail($emailLogado);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -27,11 +45,8 @@
                     <div class="profile-popup-avatar">
                         <img src="../img/user 7.png" alt="Avatar" style="width:80px; border-radius:50%;">
                     </div>
-                    <h3 id="popupProfileName">Fábio Souza</h3>
-                    <p id="popupProfileRole">Desenvolvedor Full Stack</p>
-                    <p id="popupProfileEmail">Fabiosgonçalves7@Gmail.com</p>
-                    <p id="popupProfilePhone">(85) 9 87348907</p>
-                    <p id="popupProfileAddress">Rua Andrea 89</p>
+                    <h3 id="popupProfileName"><?php echo htmlspecialchars($usuario['nome']); ?></h3>
+                    <p id="popupProfileEmail"><?php echo htmlspecialchars($usuario['email']); ?></p>
                 </div>
             </div>
             <!-- Fim Popup perfil -->

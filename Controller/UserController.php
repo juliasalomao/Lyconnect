@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Controller;
 
 use Model\User;
@@ -8,10 +9,13 @@ use Exception;
 class UserController{
     private $userModel;
 
-    public function __construct()
-    {
-        $this->userModel = new User();
+public function __construct()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
     }
+    $this->userModel = new User();
+}
 
     // Cadastro
     public function createUser($user_fullname, $email, $password){
@@ -31,18 +35,17 @@ class UserController{
     }
 
     // Login
-    public function login($email, $password){
-        $user = $this->userModel->getUserByEmail($email);
+public function login($email, $password){
+    $user = $this->userModel->getUserByEmail($email);
 
-        if ($user && password_verify($password, $user['senha'])) {
-            $_SESSION['id'] = $user['id'];
-            $_SESSION['user_fullname'] = $user['user_fullname'];
-            $_SESSION['email'] = $user['email'];
-            var_dump($_SESSION);
-            return true;
-        }
-        return false;
+    if ($user && password_verify($password, $user['senha'])) {
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['user_fullname'] = $user['nome'];
+        $_SESSION['email'] = $user['email'];
+        return true;
     }
+    return false;
+}
 
     // Usuário loggado?
     public function isLoggedIn(){
