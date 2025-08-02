@@ -33,7 +33,7 @@ $usuario = $userController->checkUserByEmail($emailLogado);
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="sidebar-header">
-                <span class="menu-icon">≡</span>
+                <span class="menu-icon"><a href="../index.php"><</a></span>
                 <h1>Contatos</h1>
                 <i class="bi bi-person" id="perfil"></i>
             </div>
