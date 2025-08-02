@@ -12,12 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $data['email'] ?? '';
     $telefone = $data['telefone'] ?? '';
     $endereco = $data['endereco'] ?? '';
-    $profissao = $data['profissao'] ?? '';
 
     $contatoController = new ContatoController();
 
     try {
-        $result = $contatoController->createContato($nome, $email, $telefone, $endereco, $profissao);
+        $result = $contatoController->createContato($nome, $email, $telefone, $endereco);
 
         if ($result) {
             echo json_encode(['success' => true, 'message' => 'Contato criado com sucesso']);

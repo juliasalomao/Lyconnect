@@ -6,7 +6,6 @@ const contactsData = [
         email: "Fabiosgonçalves7@Gmail.com",
         phone: "(85) 9 87348907",
         company: "Freelancer",
-        position: "Desenvolvedor Full Stack",
         location: "Fortaleza, CE",
         address: "Rua Andrea 89",
         bio: "Desenvolvedor experiente em tecnologias web modernas e soluções inovadoras.",
@@ -20,7 +19,6 @@ const contactsData = [
         email: "carlos.oliveira@empresa.com",
         phone: "(21) 98888-5678",
         company: "Digital Marketing Pro",
-        position: "Gerente de Marketing",
         location: "Rio de Janeiro, RJ",
         address: "Av. Copacabana, 456",
         bio: "Profissional de marketing digital com expertise em campanhas online e análise de dados.",
@@ -34,7 +32,6 @@ const contactsData = [
         email: "maria.santos@consultoria.com",
         phone: "(31) 97777-9012",
         company: "Business Consulting",
-        position: "Consultora de Negócios",
         location: "Belo Horizonte, MG",
         address: "Rua da Liberdade, 789",
         bio: "Consultora experiente em estratégia empresarial e transformação digital.",
@@ -48,7 +45,6 @@ const contactsData = [
         email: "joao.pereira@startup.com",
         phone: "(47) 96666-3456",
         company: "InnovaTech Startup",
-        position: "CTO",
         location: "Florianópolis, SC",
         address: "Rua da Inovação, 321",
         bio: "Empreendedor e tecnólogo com foco em inovação e desenvolvimento de produtos digitais.",
@@ -62,7 +58,6 @@ const contactsData = [
         email: "fernanda.costa@design.com",
         phone: "(85) 95555-7890",
         company: "Creative Design Studio",
-        position: "UX/UI Designer",
         location: "Fortaleza, CE",
         address: "Av. Beira Mar, 654",
         bio: "Designer criativa especializada em experiência do usuário e interfaces intuitivas.",
@@ -76,7 +71,6 @@ const contactsData = [
         email: "ana.silva@email.com",
         phone: "(11) 99999-1234",
         company: "Tech Solutions",
-        position: "Desenvolvedora Frontend",
         location: "São Paulo, SP",
         address: "Rua das Flores, 123",
         bio: "Especialista em React e JavaScript com 5 anos de experiência em desenvolvimento web.",
@@ -90,7 +84,6 @@ const contactsData = [
         email: "roberto.lima@vendas.com",
         phone: "(62) 94444-2468",
         company: "Sales Excellence",
-        position: "Diretor de Vendas",
         location: "Goiânia, GO",
         address: "Rua do Comércio, 987",
         bio: "Profissional de vendas com mais de 10 anos de experiência em gestão de equipes comerciais.",
@@ -105,7 +98,6 @@ const contactsData = [
         email: "tiana.melo@empresa.com",
         phone: "(11) 94567-8901",
         company: "Tech Innovation",
-        position: "Analista de Sistemas",
         location: "São Paulo, SP",
         address: "Rua Paulista, 1000",
         bio: "Analista especializada em sistemas corporativos e otimização de processos.",
@@ -119,7 +111,6 @@ const contactsData = [
         email: "gabriel.reis@startup.com",
         phone: "(21) 93456-7890",
         company: "Digital Solutions",
-        position: "Product Manager",
         location: "Rio de Janeiro, RJ",
         address: "Av. Atlântica, 500",
         bio: "Gerente de produto com foco em soluções digitais e experiência do usuário.",
@@ -133,7 +124,6 @@ const contactsData = [
         email: "felipe.lins@consultoria.com",
         phone: "(31) 92345-6789",
         company: "Business Strategy",
-        position: "Consultor Sênior",
         location: "Belo Horizonte, MG",
         address: "Rua dos Negócios, 200",
         bio: "Consultor sênior especializado em estratégia empresarial e transformação organizacional.",
@@ -153,6 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const addContactForm = document.getElementById('addContactForm');
     const editBtn = document.getElementById('editContactBtn');
     const saveBtn = document.getElementById('saveContactBtn');
+    const save = document.getElementById('salvar');
     const deleteBtn = document.getElementById('deleteContactBtn');
 
     // Inicializar funcionalidade de pesquisa de contatos
@@ -180,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const nome = document.getElementById('modalNome').value.trim();
         const email = document.getElementById('modalEmail').value.trim();
-        const cargo = document.getElementById('modalCargo').value.trim() || "Novo Cargo";
         const telefone = document.getElementById('modalTelefone').value.trim();
         const endereco = document.getElementById('modalEndereco').value.trim();
 
@@ -190,7 +180,6 @@ document.addEventListener('DOMContentLoaded', function() {
             email: email,
             telefone: telefone,
             endereco: endereco,
-            cargo: cargo
         };
 
         fetch('../Controller/SalvarContato.php', {  
@@ -215,7 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     email: email,
                     phone: telefone,
                     company: "Nova Empresa",
-                    position: cargo,
                     location: "Nova Localização",
                     address: endereco,
                     bio: "Novo contato adicionado.",
@@ -254,6 +242,10 @@ document.addEventListener('DOMContentLoaded', function() {
     saveBtn.addEventListener('click', function() {
         saveContactChanges();
     });
+
+    save.addEventListener('click',function(){
+        saveContactChanges();
+    })
 
     // Event listener para botão excluir
     deleteBtn.addEventListener('click', function() {
@@ -299,7 +291,6 @@ function filterAndRenderContacts(searchTerm) {
     const filteredContacts = contactsData.filter(contact => 
         contact.name.toLowerCase().includes(searchTerm) ||
         contact.company.toLowerCase().includes(searchTerm) ||
-        contact.position.toLowerCase().includes(searchTerm) ||
         contact.tags.some(tag => tag.toLowerCase().includes(searchTerm))
     );
     
@@ -362,11 +353,9 @@ function renderContactsInSidebar(contacts) {
 function showContactDetailsInMain(contact) {
     // Atualizar informações do perfil
     const profileName = document.getElementById('profileName');
-    const profileRole = document.getElementById('profileRole');
     const profileAvatar = document.querySelector('.profile-avatar img');
     
     if (profileName) profileName.textContent = contact.name;
-    if (profileRole) profileRole.textContent = contact.position;
     if (profileAvatar) profileAvatar.src = contact.avatar;
     
     // Atualizar campos do formulário
@@ -415,38 +404,72 @@ function toggleEditMode(enable) {
     }
 }
 
-// Função para salvar alterações do contato
 function saveContactChanges() {
-    if (!currentContactId) return;
-    
-    const contact = contactsData.find(c => c.id === currentContactId);
-    if (!contact) return;
-    
-    // Obter valores dos campos
+    // Pega os dados do formulário editável
     const nomeInput = document.getElementById('nomeInput');
     const emailInput = document.getElementById('emailInput');
     const telefoneInput = document.getElementById('telefoneInput');
     const enderecoInput = document.getElementById('enderecoInput');
     
-    // Atualizar dados do contato
-    contact.name = nomeInput.value;
-    contact.email = emailInput.value;
-    contact.phone = telefoneInput.value;
-    contact.address = enderecoInput.value;
-    
-    // Atualizar informações do perfil
-    const profileName = document.getElementById('profileName');
-    if (profileName) profileName.textContent = contact.name;
-    
-    // Renderizar novamente a sidebar para refletir mudanças
-    renderContactsInSidebar(contactsData);
-    
-    // Sair do modo de edição
-    toggleEditMode(false);
-    
-    // Mostrar mensagem de sucesso
-    alert('Contato atualizado com sucesso!');
+    const novoContato = {
+        nome: nomeInput.value.trim(),
+        email: emailInput.value.trim(),
+        telefone: telefoneInput.value.trim(),
+        endereco: enderecoInput.value.trim()
+    };
+
+    // Envia para o backend para criar novo contato
+    fetch('../Controller/SalvarContato.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(novoContato)
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert('Novo contato criado com sucesso!');
+
+            // Gerar novo id para uso local (se precisar)
+            const newId = contactsData.length ? Math.max(...contactsData.map(c => c.id)) + 1 : 1;
+
+            // Montar contato completo pra UI local
+            const contatoCompleto = {
+                id: newId,
+                name: novoContato.nome,
+                email: novoContato.email,
+                phone: novoContato.telefone,
+                company: "Nova Empresa",
+                location: "Nova Localização",
+                address: novoContato.endereco,
+                bio: "Novo contato criado via edição.",
+                avatar: "../img/user 7.png",
+                lastContact: new Date().toISOString().split('T')[0],
+                tags: ["Novo"]
+            };
+
+            // Adicionar na lista local
+            contactsData.push(contatoCompleto);
+
+            // Renderizar lista e mostrar detalhes
+            renderContactsInSidebar(contactsData);
+            showContactDetailsInMain(contatoCompleto);
+            selectContactInSidebar(contatoCompleto.id);
+
+            // Sair do modo edição
+            toggleEditMode(false);
+
+        } else {
+            alert('Erro ao criar novo contato: ' + (data.message || 'Erro desconhecido'));
+        }
+    })
+    .catch(err => {
+        console.error('Erro na requisição:', err);
+        alert('Erro ao conectar com o servidor.');
+    });
 }
+
 
 // Função para excluir contato
 function deleteContact() {
@@ -485,14 +508,12 @@ function deleteContact() {
 // Função para limpar detalhes do contato
 function clearContactDetails() {
     const profileName = document.getElementById('profileName');
-    const profileRole = document.getElementById('profileRole');
     const nomeInput = document.getElementById('nomeInput');
     const emailInput = document.getElementById('emailInput');
     const telefoneInput = document.getElementById('telefoneInput');
     const enderecoInput = document.getElementById('enderecoInput');
     
     if (profileName) profileName.textContent = '';
-    if (profileRole) profileRole.textContent = '';
     if (nomeInput) nomeInput.value = '';
     if (emailInput) emailInput.value = '';
     if (telefoneInput) telefoneInput.value = '';

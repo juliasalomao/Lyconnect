@@ -42,9 +42,7 @@ $usuario = $userController->checkUserByEmail($emailLogado);
             <div id="profilePopup" class="profile-popup" style="display:none;">
                 <div class="profile-popup-content">
                     <span class="close-profile-popup" style="cursor:pointer; float:right;">&times;</span>
-                    <div class="profile-popup-avatar">
-                        <img src="../img/user 7.png" alt="Avatar" style="width:80px; border-radius:50%;">
-                    </div>
+                    
                     <h3 id="popupProfileName"><?php echo htmlspecialchars($usuario['nome']); ?></h3>
                     <p id="popupProfileEmail"><?php echo htmlspecialchars($usuario['email']); ?></p>
                 </div>
@@ -166,7 +164,6 @@ $usuario = $userController->checkUserByEmail($emailLogado);
                     <div class="profile-avatar"> <img src="../img/user 7.png" alt=""></div>
                     <div class="profile-info">
                         <h2 id="profileName">Fábio Souza</h2>
-                        <p id="profileRole">cargo profissional</p>
                         <div class="profile-actions">
                             <button class="status-btn">Status: Ativo</button>
                             <button class="edit-btn" id="editContactBtn">Editar</button>
@@ -221,10 +218,6 @@ $usuario = $userController->checkUserByEmail($emailLogado);
                     <input type="email" id="modalEmail" name="email" placeholder="Insira e-mail" required>
                 </div>
                 <div class="form-group-modal">
-                    <img src="../img/account 1.png" alt="" class="modal-icon">
-                    <input type="text" id="modalCargo" name="cargo" placeholder="Insira cargo">
-                </div>
-                <div class="form-group-modal">
                     <img src="../img/user 7.png" alt="" class="modal-icon">
                     <span class="country-code">País +55</span>
                     <input type="tel" id="modalTelefone" name="telefone" placeholder="Insira Nº de telefone" required>
@@ -236,7 +229,7 @@ $usuario = $userController->checkUserByEmail($emailLogado);
 
                 <!-- BOTÃO DE SALVAR -->
                 <div class="form-group-modal" style="text-align: right; margin-top: 20px;">
-                    <button type="submit"
+                    <button type="submit" id="salvar"
                         style="padding: 10px 20px; background-color: #052959; color: white; border: none; border-radius: 5px; cursor: pointer;">
                         Salvar
                     </button>
