@@ -1,0 +1,29 @@
+{
+    "name": "julia/lyconnect",
+    "description": "Projeto Lyconnect - Sistema de comentários e autenticação",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "Controller/",
+            "Model\\": "Model/",
+            "Config\\": "Config/"
+        },
+        "files": [
+            "Config/configuration.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
